@@ -1,10 +1,17 @@
 //################# Dom Element #################
+const startScreen = document.querySelector(".start-screen");
+const gameScreen = document.querySelector(".game-screen");
 const container = document.querySelector(".image-container");
 const startButton = document.querySelector(".start-button");
 const gameText = document.querySelector(".game-text");
 const playTime = document.querySelector(".play-time");
+const themeMenu = document.querySelector(".theme-menu");
+const themeList = document.querySelector(".theme-list");
+const themeClose = document.querySelector(".theme-close");
+const cheatBtn = document.querySelector(".cheat");
 
 //################# variable #################
+const delayTime = 4000; //완성 사진 보여 줄 시간
 const tileCount = 16; //타일수
 let tiles = []; //li를 담을 배열
 
@@ -34,23 +41,26 @@ function checkStatus() {
 function setGame() {
     isPlaying = true;
     container.innerHTML = "";//화면의 타일을 모두 지운다
-    time = 0;
+    time = 1;
     gameText.style.display = "none";
     clearInterval(timeInterval);
-    timeInterval = setInterval(() => {
-        playTime.innerText = time;
+    timeInterval = setInterval(() => {  
         time++;
+        playTime.innerText = time;                
     }, 1000)
-
     tiles = createImageTiles(); //타일 배열에 임의로 li를 담아두는 코드
     tiles.forEach(elem => container.appendChild(elem)); //tiles배열을 돌면서 dom에 완성본을 그리는 코드
 
-    //2초뒤에 섞인 퍼즐을 dom에 그리는 코드
+    //몇초뒤에 섞인 퍼즐을 dom에 그리는 코드
     setTimeout(() => {
         container.innerHTML = "";
         //tiles를 섞은후 dom에 그린다
         shuffle(tiles).forEach(elem => container.appendChild(elem));
-    }, 2000);
+    }, delayTime);
+}
+
+function choiceGame() {
+    themeMenu.classList.add("active");
 }
 
 
@@ -82,6 +92,24 @@ function shuffle(array) {
 
 
 //################# events #################
+[...themeList.children].forEach(child => {
+    child.addEventListener("click", () => {        
+        container.classList.add(child.getAttribute("data-theme"));
+        themeMenu.classList.remove("active");
+        startScreen.classList.add('hide');
+        gameScreen.classList.add('active');
+        setGame();
+    });
+});
+themeClose.addEventListener("click", () => themeMenu.classList.remove("active"));
+cheatBtn.addEventListener("click", () => {
+    [...container.children].forEach(child => {
+        const cheatIndex = child.getAttribute("data-index");
+        const span = document.createElement("span");
+        span.innerText = parseInt(cheatIndex) + 1;
+        child.appendChild(span);
+    })
+})
 container.addEventListener("dragstart", e => {
     if(!isPlaying) return;
     const obj = e.target; //편의상 obj에 담음
@@ -115,4 +143,4 @@ container.addEventListener("drop", e => {
     checkStatus();
 })
 
-startButton.addEventListener("click", setGame);
+startButton.addEventListener("click", choiceGame);

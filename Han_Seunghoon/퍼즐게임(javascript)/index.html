@@ -10,12 +10,28 @@
 </head>
 <body>    
     <div class="wrap-all">
-        <p class="play-time">0</p>
-        <ul class="image-container"></ul>
+        <div class="start-screen">
+            <h1>Puzzle Game</h1>
+            <p>즐거운 퍼즐 게임</p>
+        </div>
+        <div class="game-screen">
+            <p><span class="play-time">1</span>초</p>
+            <ul class="image-container"></ul>
+            <button class="cheat">Cheat</button>
+        </div>
         <button class="start-button">Start</button>
         <p class="game-text">Complete</p>
     </div>
 
+    <div class="theme-menu">
+        <h3>테마를 선택해 주세요</h3>
+        <ul class="theme-list">
+            <li data-theme="any"><a href="#">Any</a></li>
+            <li data-theme="animals"><a href="#">Animals</a></li>
+            <li data-theme="people"><a href="#">People</a></li>
+        </ul>
+        <a href="#" class="theme-close">x</a>
+    </div>
     <script src="./main.js"></script>
 </body>
 </html>
