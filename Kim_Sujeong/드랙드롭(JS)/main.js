@@ -1,5 +1,4 @@
 // Constant
-
 const easy = {
     keyword: "list4_",
     tilesCnt : 4,
@@ -20,7 +19,6 @@ const gameText = document.querySelector(".game-text");
 const playTime = document.querySelector(".play-time");
 const initialImg = document.querySelector(".initial-img");
 const options = document.querySelector(".options");
-
 
 // Variable
 let tiles = [];
@@ -63,7 +61,7 @@ function setGame(){
     container.classList.add(difficulty.keyword);
     // tiles setting
     tiles = createImageTiles();
-    tiles.forEach((tile)=>container.appendChild(tile))
+    tiles.forEach((tile)=>container.appendChild(tile));
     setTimeout(()=>{
         shuffle(tiles).forEach((tile)=>container.appendChild(tile));
         timeInterval = setInterval(()=>{
@@ -79,13 +77,9 @@ function setDifficulty(){
     const difficultyNodeList = document.getElementsByName('difficulty');
     difficultyNodeList.forEach((node)=>{
         if(node.checked){
-            if(node.value==='easy'){
-                difficulty = easy;
-            } else if(node.value==='normal'){
-                difficulty = normal;
-            } else if(node.value==='hard'){
-                difficulty = hard;
-            }
+            if(node.value==='easy') difficulty = easy;
+            else if(node.value==='normal') difficulty = normal;
+            else if(node.value==='hard') difficulty = hard;
         }
     })
 }
@@ -140,27 +134,28 @@ container.addEventListener('dragover', (e)=>{
 })
 // when drop(finish draging) event occurs
 container.addEventListener('drop', (e)=>{
+    // 이벤트 발생한 타겟을 가져옴.
     const obj = e.target;
-
+    // 드래그가 끝난 li와 드래그가 시작된 li가 다르다면 -> 위치를 서로 바꿔야함.
     if(obj.className !== dragged.class){
         let originPlace;
         let isLast = false;
-    
-        if(dragged.el.nextSibling){
-            originPlace = dragged.el.nextSibling;
-        }else{
+        // 마지막 li인지에 따라 originPlace를 설정(총 16칸의 퍼즐이라면 16번쨰 조각이 아니라면)
+        if(dragged.el.nextSibling) originPlace = dragged.el.nextSibling;
+        else {
             originPlace = dragged.el.previousSibling;
             isLast = true;
         }
-
+        // 순서를 맞춰줌.
         const droppedIdx = [...obj.parentNode.children].indexOf(obj);
         dragged.index > droppedIdx ? obj.before(dragged.el) :  obj.after(dragged.el);
         isLast ? originPlace.after(obj) : originPlace.before(obj);
     }
+    // 종료조건을 충족하는지 체크함.
     checkStatus();
 })
 // when we start the game
 startButton.addEventListener("click", ()=>{
-    setDifficulty();
-    setGame();
+    setDifficulty(); // 난이도 셋팅
+    setGame(); // 게임 셋팅
 })
