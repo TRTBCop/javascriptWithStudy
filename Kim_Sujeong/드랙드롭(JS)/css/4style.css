@@ -1,0 +1,24 @@
+ul[class*="list4"]{
+    grid-template-columns: repeat(2,1fr);
+}
+li[class^="list4"]{
+    width: 200px;
+    height: 200px;
+    color:var(--white);
+}
+.list4_0{
+    background-position-x: 0px;
+    background-position-y: 0px;
+}
+.list4_1{
+    background-position-x: -200px;
+    background-position-y: 0px;
+}
+.list4_2{
+    background-position-x: 0px;
+    background-position-y: -200px;
+}
+.list4_3{
+    background-position-x: -200px;
+    background-position-y: -200px;
+}
