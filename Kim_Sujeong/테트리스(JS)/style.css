@@ -1,0 +1,124 @@
+*{
+    margin : 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+body{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+/* basic style */
+.wrapper{
+    text-align: center;
+    width: 250px;
+    padding-top: 1em;
+
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+.game_info{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 10px;
+}
+.game_info > div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.game_info > button{
+    width: 100%;
+    margin: 0.8rem 0 1rem 0;
+}
+.gameinfo_text{
+    text-align: start;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.gameinfo_value{
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.startBtn{
+    padding : 0.5rem 1rem;
+    background-color : salmon;
+    color: white;
+    border : none;
+    border-radius: 1em;
+    cursor : pointer;
+    text-align: center;
+
+    width :100px;
+    margin-bottom: 1rem;
+}
+/* situation style */
+.hidden {
+    display: none;
+}
+/* restart style */
+/* .game-text{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    position : fixed;
+    width :100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.7);
+    left:0;
+    top:0;
+    color:#ffffff;
+    font-size: 50px;
+}
+.game-text > button{
+    padding : 0.5rem 1rem;
+    color : #ffffff;
+    background: salmon;
+    border : none;
+    cursor : pointer;
+} */
+/* playground style */
+.playground > ul{
+    border : 1px solid #333;
+    width : 250px;
+    margin: 0 auto;
+}
+.playground > ul > li{
+    width:100%;
+    height:25px;
+}
+.playground > ul > li > ul{
+    display:flex;
+}
+.playground > ul > li > ul > li{
+    width:25px;
+    height:25px;
+    outline: 1px solid #ccc;
+}
+
+/* blocks Style */
+.tree{
+    background: #67c23a;
+}
+.bar{
+    background: salmon;
+}
+.square{
+    background: #aaaa11;
+}
+.zee{
+    background: #8844ad;
+}
+.elLeft{
+    background: #3332aa;
+}
+.elRight{
+    background: #ee1c13;
+}
+
+

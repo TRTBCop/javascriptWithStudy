@@ -1,0 +1,149 @@
+*{
+    margin:0;
+    padding:0;
+}
+html, body{
+    height : 100%;
+}
+
+.wrapper{
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.user-container{
+    flex:1;
+    background-color: #a9bdce;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem;
+}
+.user-container[class*="Dark"]{
+    background-color: #122330;
+}
+#nickname{
+    padding-left: 10px;
+    font-size: 14px;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+#nickname[class*="Dark"]{
+    color: white;
+}
+
+#colorPalette{
+    border-radius: 50%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 35px;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    justify-content: space-between;
+    background-color: White;
+    color: Black;
+}
+#colorPalette[class*="Dark"]{
+    background-color: black;
+    color: white;
+}
+
+.display-container{
+    flex: 12;
+    background-color: #b2c7d9;
+    overflow-y: scroll;
+}
+.display-container[class*="Dark"]{
+    background-color: #1a3142;
+}
+.chatting-list li {
+    width:90%;
+    padding:0.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+.profile .user{
+    font-size: 10px;
+    margin-bottom: 0.3rem;
+}
+.profile .user[class*="Dark"]{
+    color: white;
+}
+
+.profile .image{
+    border-radius: 50%;
+    object-fit: cover;
+    width:50px;
+    height:50px;
+    flex: 1;
+}
+.message{
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 12px;
+    margin: 0 5px;
+    flex: 7;
+}
+.time {
+    font-size:10px;
+    margin: 0 5px;
+}
+.time[class*="Dark"]{
+    color: white;
+}
+.sent{
+    flex-direction: row-reverse;
+    float: right;
+}
+.sent .message{
+    background: #ffed33;
+}
+.receive .message{
+    background: #fff;
+}
+
+.input-container{
+    flex: 2;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    background-color: white;
+}
+.input-container span{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding : 0.3rem;
+    width: 100%;
+}
+.input-container span[class*="Dark"]{
+    background-color: #1a3142;
+}
+.chatting-input{
+    font-size: 12px;
+    height: 100%;
+    flex: 8;
+    border: none;
+}
+.chatting-input[class*="Dark"]{
+    background-color: whitesmoke;
+}
+.send-button{
+    flex:1;
+    background-color: #ffeb33;
+    border: none;
+    height: 100%;
+    border-radius: 3px;
+}
