@@ -88,6 +88,7 @@ container.addEventListener('dragover',e=>{
 })
 
 container.addEventListener('drop',e=>{
+    if(!isPlaying)return;
     const obj = e.target
 
     if(obj.className!== dragged.class){
@@ -108,5 +109,5 @@ container.addEventListener('drop',e=>{
 })
 
 startButton.addEventListener('click',()=>{
-    gameText.style.display="block";
+    setGame()
 })
