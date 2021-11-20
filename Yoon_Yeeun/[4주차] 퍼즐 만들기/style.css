@@ -34,10 +34,18 @@ li{
     height:100px;
     border: 1px solid red;
     color: var(--white);
-    background: url("https://placeimg.com/400/400/any");
+    /*background: url("https://placeimg.com/400/400/any");*/
 }
 
 .start-button{
+    background: var(--facebook);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+}
+
+.img-button{
     background: var(--facebook);
     color: var(--white);
     border: none;
@@ -53,81 +61,81 @@ li{
     display: none;
 }
 
-.list0{
-    background-position-x: 0px;
-    background-position-y: 0px;
-}
+/*.list0{*/
+/*    background-position-x: 0px;*/
+/*    background-position-y: 0px;*/
+/*}*/
 
-.list1{
-    background-position-x: -100px;
-    background-position-y: 0px;
-}
+/*.list1{*/
+/*    background-position-x: -100px;*/
+/*    background-position-y: 0px;*/
+/*}*/
 
-.list2{
-    background-position-x: -200px;
-    background-position-y: 0px;
-}
+/*.list2{*/
+/*    background-position-x: -200px;*/
+/*    background-position-y: 0px;*/
+/*}*/
 
-.list3{
-    background-position-x: -300px;
-    background-position-y: 0px;
-}
+/*.list3{*/
+/*    background-position-x: -300px;*/
+/*    background-position-y: 0px;*/
+/*}*/
 
-.list4{
-    background-position-x: 0px;
-    background-position-y: -100px;
-}
+/*.list4{*/
+/*    background-position-x: 0px;*/
+/*    background-position-y: -100px;*/
+/*}*/
 
-.list5{
-    background-position-x: -100px;
-    background-position-y: -100px;
-}
+/*.list5{*/
+/*    background-position-x: -100px;*/
+/*    background-position-y: -100px;*/
+/*}*/
 
-.list6{
-    background-position-x: -200px;
-    background-position-y: -100px;
-}
+/*.list6{*/
+/*    background-position-x: -200px;*/
+/*    background-position-y: -100px;*/
+/*}*/
 
-.list7{
-    background-position-x: -300px;
-    background-position-y: -100px;
-}
+/*.list7{*/
+/*    background-position-x: -300px;*/
+/*    background-position-y: -100px;*/
+/*}*/
 
-.list8{
-    background-position-x: 0px;
-    background-position-y: -200px;
-}
+/*.list8{*/
+/*    background-position-x: 0px;*/
+/*    background-position-y: -200px;*/
+/*}*/
 
-.list9{
-    background-position-x: -100px;
-    background-position-y: -200px;
-}
+/*.list9{*/
+/*    background-position-x: -100px;*/
+/*    background-position-y: -200px;*/
+/*}*/
 
-.list10{
-    background-position-x: -200px;
-    background-position-y: -200px;
-}
+/*.list10{*/
+/*    background-position-x: -200px;*/
+/*    background-position-y: -200px;*/
+/*}*/
 
-.list11{
-    background-position-x: -300px;
-    background-position-y: -200px;
-}
-.list12{
-    background-position-x: 0px;
-    background-position-y: -300px;
-}
+/*.list11{*/
+/*    background-position-x: -300px;*/
+/*    background-position-y: -200px;*/
+/*}*/
+/*.list12{*/
+/*    background-position-x: 0px;*/
+/*    background-position-y: -300px;*/
+/*}*/
 
-.list13{
-    background-position-x: -100px;
-    background-position-y: -300px;
-}
+/*.list13{*/
+/*    background-position-x: -100px;*/
+/*    background-position-y: -300px;*/
+/*}*/
 
-.list14{
-    background-position-x: -200px;
-    background-position-y: -300px;
-}
+/*.list14{*/
+/*    background-position-x: -200px;*/
+/*    background-position-y: -300px;*/
+/*}*/
 
-.list15{
-    background-position-x: -300px;
-    background-position-y: -300px;
-}
+/*.list15{*/
+/*    background-position-x: -300px;*/
+/*    background-position-y: -300px;*/
+/*}*/
