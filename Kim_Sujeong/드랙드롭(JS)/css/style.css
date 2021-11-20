@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* css내에서 변수처럼 값을 사용할 수 있게 함. */
+:root{
+    --facebook : #3b5998;
+    --white : #fff;
+    --green : #67c23a;
+    --easy : #499423;
+    --normal : #e8ec06;
+    --hard : #fc0707;
+    
+}
+.wrap-all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.play-time{
+    font-size: 3rem;
+    margin-top: 2rem;
+    color: var(--facebook);
+}
+ul{
+    margin-top: 1rem;
+    list-style:none;
+    border:2px solid var(--facebook);
+    display:grid;
+}
+img{
+    width: 400px;
+    height: 400px;
+}
+.options{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.options>p{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-size: large;
+    font-weight: bold;
+}
+div.difficulty_option{
+    margin-top: 0.5rem;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    font-size: large;
+    font-weight: bold;
+}
+div.difficulty_option >label[class*="easy"] {
+    color: var(--easy);
+}
+div.difficulty_option >label[class*="normal"] {
+    color: var(--normal);
+}
+div.difficulty_option >label[class*="hard"] {
+    color: var(--hard);
+}
+.start-button{
+    background-color: var(--facebook);
+    color:var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+}
+.game-text{
+    position: absolute;
+    font-size: 50px;
+    color: var(--green);
+    text-shadow: 1px 1px rgba(0,0,0,0,5);
+    display: none;
+}
