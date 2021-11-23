@@ -39,12 +39,13 @@ body {
     background: #ed4848;
     grid-column: span 3;
 }
-.calculator form .operator {
+.calculator form .operator,
+.calculator form .result {
     background: orange;
 }
 .calculator form .dot {
     background: green;
 }
 .calculator form .result {
-    grid-column: span 2;
+    grid-column: span 4;
 }
