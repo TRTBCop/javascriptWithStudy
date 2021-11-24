@@ -8,10 +8,17 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    
     <div class="calculator">
+        <h3>My Calculator</h1>
+        <div class="button-box">
+            <input type="button" value="클립보드">
+            <input type="button" value="공학계산기">
+        </div>
         <form name="forms">
             <input type="text" name="output" readonly>
             <input type="button" class="clear" value="C">
+            <input type="button" class="operator" value="del">
             <input type="button" class="operator" value="/">
             <input type="button" value="1">
             <input type="button" value="2">
@@ -28,6 +35,30 @@
             <input type="button" class="dot" value=".">
             <input type="button" value="0">
             <input type="button" class="operator result" value="=">
+        </form>
+    </div>
+    <div class="clickbox clipboard hidden">
+        <div>Clipboard</div>
+        <ul style="background-color: white;"></ul>
+    </div>
+    <div class="clickbox scientificCalc hidden">
+        <div>Scientific Calculator</div>
+        <form name ="sCalcForm">
+            <input type="button" value="+-">
+            <input type="button" value="(">
+            <input type="button" value=")">
+            
+            <input type="button" value="1/x">
+            <input type="button" value="x^y">
+            <input type="button" value="x!">
+            
+            <input type="button" value="mod(x)">
+            <input type="button" value="exp(x)">
+            <input type="button" value="√x">
+
+            <input type="button" value="sin(x)">
+            <input type="button" value="cos(x)">
+            <input type="button" value="tan(x)">
         </form>
     </div>
 </body>

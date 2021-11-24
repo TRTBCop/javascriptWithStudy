@@ -10,19 +10,43 @@
     --calcBDColor : #333;
     --calcBGColor : #ccc;
     --clearColor : #ed4848;
+    --w : 287px;
+    --wHalf : 135px; 
+    --wOneThird : 86px; 
+}
+/* classList */
+.hidden {
+    display: none;
 }
 
+/* Elements */
 body{
     background-color: var(--bgColor);
     /* for 중앙 정렬 */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
     height: 100vh;
 }
 
+/* button box */
+.button-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.3rem 0;
+}
+.button-box input{
+    width:  var(--wHalf);
+    border: 1px solid var(--calcBDColor);
+    padding: 0.35rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+/* basic Calculator */
 .calculator{
-    width: 287px;
+    width: var(--w);
     border : 1px solid var(--calcBDColor);
     background-color: var(--calcBGColor);
     padding: 5px;
@@ -40,7 +64,7 @@ body{
     cursor: pointer;
     font-size: 20px;
 }
-.calculator form input:hover{
+form input:hover{
     box-shadow: 1px 1px 2px var(--calcBDColor);
 }
 .operator{
@@ -58,6 +82,50 @@ input[type="text"] {
     text-align: right;
     padding: 0 10px;
 }
-.result{
-    grid-column: span 2;
+
+/* click box(clipboard + scientific Calc) */
+.clickbox{
+    width: var(--w);
+    border: 1px solid var(--calcBDColor);
+    background-color: aliceblue;
+    padding: 5px;
+
+}
+.clickbox > div {
+    padding: 0.5rem;
+    width: 100%;
+    font-size: medium;
+    font-weight: bolder;
+    border-radius: 50%;
+
+}
+/* clipboard */
+.clipboard > ul{
+    border: 0.1px solid black;
+    background-color: var(--calcBGColor);
+
+
+}
+.clipboard li{
+    text-align: end;
+    font-size: small;
+    padding: 0.3rem 1rem;
+}
+
+/* scientific Calculator */
+.scientificCalc{
+    width: var(--w);
+    background-color: aliceblue;
+}
+.scientificCalc form{
+    display: grid;
+    grid-template-columns: repeat(3,var(--wOneThird));
+    grid-auto-rows: 65px;
+    grid-gap: 5px;
+
+    padding: 0.3rem;
+}
+.scientificCalc input[type='button']{
+    background-color: rgba(175, 169, 157, 0.507);
+    font-size: medium;
 }
