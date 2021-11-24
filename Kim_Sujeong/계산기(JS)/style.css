@@ -1,0 +1,63 @@
+/* Initialize setting */
+*{
+    margin:0;
+    padding: 0;
+    /* box-sizing의 기본값은 content-box이지만, border-box로 초기화해줌. */
+    box-sizing: border-box; 
+}
+:root{
+    --bgColor: #1f1f1f;
+    --calcBDColor : #333;
+    --calcBGColor : #ccc;
+    --clearColor : #ed4848;
+}
+
+body{
+    background-color: var(--bgColor);
+    /* for 중앙 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator{
+    width: 287px;
+    border : 1px solid var(--calcBDColor);
+    background-color: var(--calcBGColor);
+    padding: 5px;
+}
+.calculator form{
+    display: grid;
+    /* 이 내용은 꽤 많이 유익하다. 
+    grid로 배열을 하는데도 자꾸 안먹어서 힘들어했던 부분들이었는데 덕분에 알게됨 */
+    grid-template-columns: repeat(4,65px);
+    grid-auto-rows: 65px;
+    grid-gap: 5px;
+}
+.calculator form input{
+    border: 2px solid var(--calcBDColor);
+    cursor: pointer;
+    font-size: 20px;
+}
+.calculator form input:hover{
+    box-shadow: 1px 1px 2px var(--calcBDColor);
+}
+.operator{
+    background-color: orange;
+}
+.dot{
+    background-color : green;
+}
+.clear{
+    background-color: var(--clearColor);
+    grid-column: span 3;
+}
+input[type="text"] {
+    grid-column: span 4;
+    text-align: right;
+    padding: 0 10px;
+}
+.result{
+    grid-column: span 2;
+}
