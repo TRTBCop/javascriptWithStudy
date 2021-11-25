@@ -91,6 +91,13 @@ function eFactorial(){
     let changeArea = expression.slice(lastidx+1,expression.length);
 
     textInput.value = unChangeArea+nowSign+fact(changeArea);
+    if(lastidx===-1) {
+        let justCameIn = textInput.value;
+        let calculated = calculate(justCameIn);
+        textInput.placeholder = calculated;
+        textInput.value = '';
+        addClipboard(justCameIn, calculated);
+    }
 }
 // calcFunc : percent (x% = 0.0X)
 function ePercent(){
@@ -100,7 +107,15 @@ function ePercent(){
     let nowSign = expression.charAt(lastidx);
     let changeArea = expression.slice(lastidx+1,expression.length);
 
-    textInput.value = unChangeArea+nowSign+(0.01*changeArea);
+    if(lastidx===-1) {
+        textInput.value = 0.01*parseInt(expression);
+        let justCameIn = textInput.value;
+        let calculated = calculate(justCameIn);
+        textInput.placeholder = calculated;
+        textInput.value = '';
+        addClipboard(justCameIn, calculated);
+    } else textInput.value = unChangeArea+nowSign+(0.01*parseInt(changeArea));
+
 }
 // sub-calcFunc : calculate factorial 
 function fact(val){
