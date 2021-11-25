@@ -69,8 +69,10 @@ function eChangeMPSign(){
     let unChangeArea = expression.slice(0,lastidx);
     let nowSign = expression.charAt(lastidx);
     let changeArea = expression.slice(lastidx+1,expression.length);
-    textInput.value = nowSign==='-'?unChangeArea+'+'+changeArea:
-        nowSign==='+'?unChangeArea+'-'+changeArea: unChangeArea+nowSign+'(-'+changeArea+')';
+    textInput.value = lastidx===-1? -+expression : 
+        nowSign==='-'?unChangeArea+'+'+changeArea:
+        nowSign==='+'?unChangeArea+'-'+changeArea: 
+        unChangeArea+nowSign+'(-'+changeArea+')';
 }
 // calcFunc : change x -> 1/x
 function eReciprocal(){
@@ -80,7 +82,7 @@ function eReciprocal(){
     let nowSign = expression.charAt(lastidx);
     let changeArea = expression.slice(lastidx+1,expression.length);
 
-    textInput.value = unChangeArea+nowSign+'(1/'+changeArea+')';
+    textInput.value =  lastidx===-1? '(1/'+expression+')':unChangeArea+nowSign+'(1/'+changeArea+')';
 }
 // calcFunc : factorial (x! = x*(x-1)*(x-2)...*1)
 function eFactorial(){
@@ -115,7 +117,6 @@ function ePercent(){
         textInput.value = '';
         addClipboard(justCameIn, calculated);
     } else textInput.value = unChangeArea+nowSign+(0.01*parseInt(changeArea));
-
 }
 // sub-calcFunc : calculate factorial 
 function fact(val){
