@@ -92,24 +92,37 @@ input[type="text"] {
 
 }
 .clickbox > div {
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
     width: 100%;
     font-size: medium;
     font-weight: bolder;
     border-radius: 50%;
 
 }
+.clickbox p {
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 12px;
+    line-height: 0.1rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+
+}
 /* clipboard */
 .clipboard > ul{
     border: 0.1px solid black;
     background-color: var(--calcBGColor);
-
-
 }
 .clipboard li{
-    text-align: end;
+    text-align: start;
     font-size: small;
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+}
+.clipboard button{
+    border: 0;
+    background-color: white;
+    float: right;
+    font-size: small;
 }
 
 /* scientific Calculator */
