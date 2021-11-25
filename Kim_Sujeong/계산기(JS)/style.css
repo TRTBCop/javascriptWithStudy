@@ -13,10 +13,12 @@
     --w : 287px;
     --wHalf : 135px; 
     --wOneThird : 86px; 
+    --H : 490px;
 }
 /* classList */
 .hidden {
-    display: none;
+    /* display: none; */
+    visibility: hidden;
 }
 
 /* Elements */
@@ -26,7 +28,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column;
+    flex-flow: row;
     height: 100vh;
 }
 
@@ -86,6 +88,7 @@ input[type="text"] {
 /* click box(clipboard + scientific Calc) */
 .clickbox{
     width: var(--w);
+    height: var(--H);
     border: 1px solid var(--calcBDColor);
     background-color: aliceblue;
     padding: 5px;
@@ -106,11 +109,12 @@ input[type="text"] {
     line-height: 0.1rem;
     border-radius: 50%;
     margin-bottom: 0.5rem;
-
 }
 /* clipboard */
 .clipboard > ul{
-    border: 0.1px solid black;
+    height: 415px;
+    overflow-y: scroll;
+    border: 2px solid black;
     background-color: var(--calcBGColor);
 }
 .clipboard li{

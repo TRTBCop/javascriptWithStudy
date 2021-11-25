@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
+    <div class="clickbox clipboard hidden">
+        <div>Clipboard</div>
+        <p>더블클릭-> 입력창으로 이동 / 우클릭-> 삭제</p>
+        <ul style="background-color: white;">
+            <li>아직 계산 결과가 존재하지 않습니다.</li>
+        </ul>
+    </div>
     <div class="calculator">
         <h3>My Calculator</h1>
         <div class="button-box">
@@ -37,31 +43,17 @@
             <input type="button" class="operator result" value="=">
         </form>
     </div>
-    <div class="clickbox clipboard hidden">
-        <div>Clipboard</div>
-        <p>더블클릭-입력창으로, 우클릭-삭제</p>
-        <ul style="background-color: white;">
-            <li>아직 계산 결과가 존재하지 않습니다.</li>
-        </ul>
-    </div>
     <div class="clickbox scientificCalc hidden">
         <div>Scientific Calculator</div>
+        <p>추가적인 계산 기능은 여기서 찾아보세요</p>
         <form name ="sCalcForm">
             <input type="button" value="+-">
             <input type="button" value="(">
             <input type="button" value=")">
             
             <input type="button" value="1/x">
-            <input type="button" value="x^y">
             <input type="button" value="x!">
-            
-            <input type="button" value="mod(x)">
-            <input type="button" value="exp(x)">
-            <input type="button" value="√x">
-
-            <input type="button" value="sin(x)">
-            <input type="button" value="cos(x)">
-            <input type="button" value="tan(x)">
+            <input type="button" value="%">
         </form>
     </div>
 </body>
