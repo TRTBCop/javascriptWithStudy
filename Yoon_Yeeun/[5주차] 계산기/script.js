@@ -113,7 +113,10 @@ function dot() {
 function calc() {
     let prevInputValue = getText()
     if (prevInputValue === '119.') call119()
-    setText(eval(prevInputValue) === undefined ? '' : eval(getText()))
+    let calcResult=eval(prevInputValue) === undefined ? '' : eval(getText());
+    initialize()
+    setText(calcResult)
+    endsWithNumber=true;
 }
 
 
