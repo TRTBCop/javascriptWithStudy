@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="clickbox clipboard hidden">
+        <div>Clipboard</div>
+        <p>더블클릭-> 입력창으로 이동 / X버튼-> 삭제</p>
+        <ul style="background-color: white;">
+            <li>아직 계산 결과가 존재하지 않습니다.</li>
+        </ul>
+    </div>
+    <div class="calculator">
+        <h3>My Calculator</h1>
+        <div class="button-box">
+            <input type="button" value="클립보드">
+            <input type="button" value="공학계산기">
+        </div>
+        <form name="forms">
+            <input type="text" name="output" readonly>
+            <input type="button" class="clear" value="C">
+            <input type="button" class="operator" value="del">
+            <input type="button" class="operator" value="/">
+            <input type="button" value="1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+            <input type="button" class="operator" value="*">
+            <input type="button" value="4">
+            <input type="button" value="5">
+            <input type="button" value="6">
+            <input type="button" class="operator" value="+">
+            <input type="button" value="7">
+            <input type="button" value="8">
+            <input type="button" value="9">
+            <input type="button" class="operator" value="-">
+            <input type="button" class="dot" value=".">
+            <input type="button" value="0">
+            <input type="button" class="operator result" value="=">
+        </form>
+    </div>
+    <div class="clickbox scientificCalc hidden">
+        <div>Scientific Calculator</div>
+        <p>추가적인 계산 기능은 여기서 찾아보세요</p>
+        <form name ="sCalcForm">
+            <input type="button" value="+-">
+            <input type="button" value="(">
+            <input type="button" value=")">
+            
+            <input type="button" value="1/x">
+            <input type="button" value="x!">
+            <input type="button" value="%">
+        </form>
+    </div>
+</body>
+<script src="./calc.js"></script>
+</html>

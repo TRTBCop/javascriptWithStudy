@@ -1,0 +1,148 @@
+/* Initialize setting */
+*{
+    margin:0;
+    padding: 0;
+    /* box-sizing의 기본값은 content-box이지만, border-box로 초기화해줌. */
+    box-sizing: border-box; 
+}
+:root{
+    --bgColor: #1f1f1f;
+    --calcBDColor : #333;
+    --calcBGColor : #ccc;
+    --clearColor : #ed4848;
+    --w : 287px;
+    --wHalf : 135px; 
+    --wOneThird : 86px; 
+    --H : 490px;
+}
+/* classList */
+.hidden {
+    /* display: none; */
+    visibility: hidden;
+}
+
+/* Elements */
+body{
+    background-color: var(--bgColor);
+    /* for 중앙 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    height: 100vh;
+}
+
+/* button box */
+.button-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.3rem 0;
+}
+.button-box input{
+    width:  var(--wHalf);
+    border: 1px solid var(--calcBDColor);
+    padding: 0.35rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+/* basic Calculator */
+.calculator{
+    width: var(--w);
+    border : 1px solid var(--calcBDColor);
+    background-color: var(--calcBGColor);
+    padding: 5px;
+}
+.calculator form{
+    display: grid;
+    /* 이 내용은 꽤 많이 유익하다. 
+    grid로 배열을 하는데도 자꾸 안먹어서 힘들어했던 부분들이었는데 덕분에 알게됨 */
+    grid-template-columns: repeat(4,65px);
+    grid-auto-rows: 65px;
+    grid-gap: 5px;
+}
+.calculator form input{
+    border: 2px solid var(--calcBDColor);
+    cursor: pointer;
+    font-size: 20px;
+}
+form input:hover{
+    box-shadow: 1px 1px 2px var(--calcBDColor);
+}
+.operator{
+    background-color: orange;
+}
+.dot{
+    background-color : green;
+}
+.clear{
+    background-color: var(--clearColor);
+    grid-column: span 3;
+}
+input[type="text"] {
+    grid-column: span 4;
+    text-align: right;
+    padding: 0 10px;
+}
+
+/* click box(clipboard + scientific Calc) */
+.clickbox{
+    width: var(--w);
+    height: var(--H);
+    border: 1px solid var(--calcBDColor);
+    background-color: aliceblue;
+    padding: 5px;
+
+}
+.clickbox > div {
+    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+    width: 100%;
+    font-size: medium;
+    font-weight: bolder;
+    border-radius: 50%;
+
+}
+.clickbox p {
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 12px;
+    line-height: 0.1rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+/* clipboard */
+.clipboard > ul{
+    height: 415px;
+    overflow-y: scroll;
+    border: 2px solid black;
+    background-color: var(--calcBGColor);
+}
+.clipboard li{
+    text-align: start;
+    font-size: small;
+    padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+}
+.clipboard button{
+    border: 0;
+    background-color: white;
+    float: right;
+    font-size: small;
+}
+
+/* scientific Calculator */
+.scientificCalc{
+    width: var(--w);
+    background-color: aliceblue;
+}
+.scientificCalc form{
+    display: grid;
+    grid-template-columns: repeat(3,var(--wOneThird));
+    grid-auto-rows: 65px;
+    grid-gap: 5px;
+
+    padding: 0.3rem;
+}
+.scientificCalc input[type='button']{
+    background-color: rgba(175, 169, 157, 0.507);
+    font-size: medium;
+}
