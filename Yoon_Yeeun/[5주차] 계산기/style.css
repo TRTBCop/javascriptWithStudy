@@ -46,7 +46,10 @@ body {
 
 .calculator form input.clear {
     background-color: #ed4848;
-    grid-column: span 3;
+}
+
+.calculator form input.memory {
+    background-color: lightskyblue;
 }
 
 .calculator form input.operator {
