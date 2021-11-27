@@ -1,0 +1,108 @@
+ul[class*="list25"]{
+    grid-template-columns: repeat(5,1fr);
+}
+li[class^="list25"]{
+    width: 80px;
+    height: 80px;
+    color:var(--white);
+}
+.list25_0{
+    background-position-x: 0px;
+    background-position-y: 0px;
+}
+.list25_1{
+    background-position-x: -80px;
+    background-position-y: 0px;
+}
+.list25_2{
+    background-position-x: -160px;
+    background-position-y: 0px;
+}
+.list25_3{
+    background-position-x: -240px;
+    background-position-y: 0px;
+}
+.list25_4{
+    background-position-x: -320px;
+    background-position-y: 0px;
+}
+.list25_5{
+    background-position-x: 0px;
+    background-position-y: -80px;
+}
+.list25_6{
+    background-position-x: -80px;
+    background-position-y: -80px;
+}
+.list25_7{
+    background-position-x: -160px;
+    background-position-y: -80px;
+}
+.list25_8{
+    background-position-x: -240px;
+    background-position-y: -80px;
+}
+.list25_9{
+    background-position-x: -320px;
+    background-position-y: -80px;
+}
+.list25_10{
+    background-position-x: 0px;
+    background-position-y: -160px;
+}
+.list25_11{
+    background-position-x: -80px;
+    background-position-y: -160px;
+}
+.list25_12{
+    background-position-x: -160px;
+    background-position-y: -160px;
+}
+.list25_13{
+    background-position-x: -240px;
+    background-position-y: -160px;
+}
+.list25_14{
+    background-position-x: -320px;
+    background-position-y: -160px;
+}
+.list25_15{
+    background-position-x: 0px;
+    background-position-y: -240px;
+}
+.list25_16{
+    background-position-x: -80px;
+    background-position-y: -240px;
+}
+.list25_17{
+    background-position-x: -160px;
+    background-position-y: -240px;
+}
+.list25_18{
+    background-position-x: -240px;
+    background-position-y: -240px;
+}
+.list25_19{
+    background-position-x: -320px;
+    background-position-y: -240px;
+}
+.list25_20{
+    background-position-x: 0px;
+    background-position-y: -320px;
+}
+.list25_21{
+    background-position-x: -80px;
+    background-position-y: -320px;
+}
+.list25_22{
+    background-position-x: -160px;
+    background-position-y: -320px;
+}
+.list25_23{
+    background-position-x: -240px;
+    background-position-y: -320px;
+}
+.list25_24{
+    background-position-x: -320px;
+    background-position-y: -320px;
+}

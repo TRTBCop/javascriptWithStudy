@@ -1,9 +1,24 @@
+// Constant
+const easy = {
+    keyword: "list4_",
+    tilesCnt : 4,
+}
+const normal = {
+    keyword : "list16_",
+    tilesCnt : 16,
+}
+const hard ={
+    keyword : "list25_",
+    tilesCnt : 25,
+}
+
 // Dom Element
 const container = document.querySelector(".image-container");
 const startButton = document.querySelector(".start-button");
 const gameText = document.querySelector(".game-text");
 const playTime = document.querySelector(".play-time");
-const tilesCnt = 16;
+const initialImg = document.querySelector(".initial-img");
+const options = document.querySelector(".options");
 
 // Variable
 let tiles = [];
@@ -15,8 +30,10 @@ const dragged ={
 let isPlaying = false;
 let timeInterval = null;
 let time = 0;
+let difficulty = normal;
 
-// functions
+// =================== FUNCTION >>
+// 원위치에 있지않는 조각이 있는지 찾는 함수
 function checkStatus(){
     const currentList = [...container.children];
     const unMatchedList = currentList.filter((child,index)=> Number(child.getAttribute("data-index")) !== index);
@@ -27,35 +44,57 @@ function checkStatus(){
         clearInterval(timeInterval);
     }
 }
-
+// 게임 셋팅을 하는 함수
 function setGame(){
     // (re) initialize
+    // value setting
     time = 0;
-    gameText.style.display = 'none';
     clearInterval(timeInterval);
     isPlaying = true;
-
-    timeInterval = setInterval(()=>{
-        playTime.innerText = time;
-        time++;
-    },1000)
-
+    // view setting
+    playTime.innerText = 'Game will be start...';
+    gameText.style.display = 'none';
+    initialImg.style.display = 'none';
+    // container setting
+    container.innerHTML="";
+    container.className = "image-container";
+    container.classList.add(difficulty.keyword);
+    // tiles setting
     tiles = createImageTiles();
-    tiles.forEach((tile)=>container.appendChild(tile))
+    tiles.forEach((tile)=>container.appendChild(tile));
     setTimeout(()=>{
-        container.innerHTML="";
-        shuffle(tiles).forEach((tile)=>container.appendChild(tile))
-
-    },5000)
+        shuffle(tiles).forEach((tile)=>container.appendChild(tile));
+        timeInterval = setInterval(()=>{
+            playTime.innerText = time;
+            time++;
+        },1000)
+    },5000);
 }
+
+// set game difficulty
+function setDifficulty(){
+    //  setGame을 부르기전에 input으로 받은 난이도로 난이도를 셋팅함.
+    const difficultyNodeList = document.getElementsByName('difficulty');
+    difficultyNodeList.forEach((node)=>{
+        if(node.checked){
+            if(node.value==='easy') difficulty = easy;
+            else if(node.value==='normal') difficulty = normal;
+            else if(node.value==='hard') difficulty = hard;
+        }
+    })
+}
+
 
 // create initial tile
 function createImageTiles(){
+    // 리턴시 li들을 담아 내보낼 배열
     const tempArray = [];
-    Array(tilesCnt).fill().forEach((_,i) =>{
+    // li들을 만들고 기본 앳븃 등을 셋팅해줌.
+    Array(difficulty.tilesCnt).fill().forEach((_,i) =>{
         const li = document.createElement("li");
+        li.style.backgroundImage = `url("https://placeimg.com/400/400/tech")`;
         li.setAttribute('data-index', i);
-        li.classList.add(`list${i}`);
+        li.classList.add(`${difficulty.keyword}${i}`);
         li.setAttribute('draggable','true');
         tempArray.push(li);
     })
@@ -64,7 +103,7 @@ function createImageTiles(){
 
 // shuffle image's pieces
 function shuffle(arr){
-    let index = arr.length-1; //마지막 인덱스 선택
+    let index = arr.length-1; 
     while(index>0){
         const randomIdx = Math.floor(Math.random()*(index+1));
         [arr[index],arr[randomIdx]] = [arr[randomIdx], arr[index]];
@@ -75,7 +114,7 @@ function shuffle(arr){
 
 
 
-// Event
+// =================== EVENT >>
 // when piece drag start
 container.addEventListener('dragstart', (e)=>{
     if(!isPlaying) return;
@@ -95,26 +134,28 @@ container.addEventListener('dragover', (e)=>{
 })
 // when drop(finish draging) event occurs
 container.addEventListener('drop', (e)=>{
+    // 이벤트 발생한 타겟을 가져옴.
     const obj = e.target;
-
+    // 드래그가 끝난 li와 드래그가 시작된 li가 다르다면 -> 위치를 서로 바꿔야함.
     if(obj.className !== dragged.class){
         let originPlace;
         let isLast = false;
-    
-        if(dragged.el.nextSibling){
-            originPlace = dragged.el.nextSibling;
-        }else{
+        // 마지막 li인지에 따라 originPlace를 설정(총 16칸의 퍼즐이라면 16번쨰 조각이 아니라면)
+        if(dragged.el.nextSibling) originPlace = dragged.el.nextSibling;
+        else {
             originPlace = dragged.el.previousSibling;
             isLast = true;
         }
-
+        // 순서를 맞춰줌.
         const droppedIdx = [...obj.parentNode.children].indexOf(obj);
         dragged.index > droppedIdx ? obj.before(dragged.el) :  obj.after(dragged.el);
         isLast ? originPlace.after(obj) : originPlace.before(obj);
     }
+    // 종료조건을 충족하는지 체크함.
     checkStatus();
 })
-
+// when we start the game
 startButton.addEventListener("click", ()=>{
-    setGame();
+    setDifficulty(); // 난이도 셋팅
+    setGame(); // 게임 셋팅
 })
