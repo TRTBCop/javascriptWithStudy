@@ -11,6 +11,7 @@ body {
     height: 100vh;
 }
 .calculator {
+    position: relative;
     width: 287px;
     border: 1px solid #333;
     background: #ccc;
@@ -48,4 +49,81 @@ body {
 }
 .calculator form .result {
     grid-column: span 4;
+}
+
+/* history */
+.history-wrap {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+}
+.history-btn {
+    font-size: 20px;
+    color: #646464;
+}
+.history-btn:hover {
+    color: #111;
+}
+.history-body {
+    display: none;
+    background: #fff;
+    box-shadow: 1px 1px 10px #111;
+    min-width: 230px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.history-body.active {
+    display: block;
+}
+.history-header {
+    display: flex;
+    justify-content: space-between;
+}
+.history-header h3 {
+    color: dodgerblue;
+    letter-spacing: 1px;
+}
+.history-close {
+    color: #646464;
+}
+.history-close:hover {
+    color: #111;
+}
+.history-cont {
+    margin-top: 10px;
+}
+.history-cont li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;    
+}
+.history-cont li span {
+    border: 1px solid #dbdbdb;
+    color: dodgerblue;
+    padding: 3px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.history-cont li span:first-child {
+    margin-right: 5px;
+}
+.history-cont li span:last-child {
+    margin-left: 5px;
+}
+.history-cont li span:hover {
+    background: #f1f1f1;
+}
+.history-cont li div {
+    display: flex;
+    align-items: center;
+}
+.history-cont li a {
+    cursor: pointer;
+    color: #9f1111;
+    transition: 0.3s;
+}
+.history-cont li a:hover {
+    transform: scale(1.2);
 }

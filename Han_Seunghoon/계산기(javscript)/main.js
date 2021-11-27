@@ -1,16 +1,22 @@
 //################### variable ###################
 let beforeOperator = false; //이전에 연산자 입력 했는지 판단할 변수
+//연산자 우선순위
 const compare = {
     '+': 2,
     '-': 2,
     '*': 1,
     '/': 1,
-    '(': 0    
+    '(': 0
 }
 
 //################### Dom ###################
 const formElem = document.querySelector("form[name='forms']");
 const outputElem = formElem.querySelector("input[name='output']");
+const historyBtnElem = document.querySelector(".history-btn");
+const historyCloseBtnElem = document.querySelector(".history-close");
+const historyBodyElem = document.querySelector(".history-body");
+const historyContElem = historyBodyElem.querySelector(".history-cont");
+const historyNone = historyContElem.querySelector(".history-none");
 
 //################### Event ###################
 [...formElem.childNodes].forEach(elem => {
@@ -35,6 +41,15 @@ const outputElem = formElem.querySelector("input[name='output']");
             }                           
         })
     };
+})
+historyBtnElem.addEventListener("click", () => {
+    historyBodyElem.classList.add("active");
+    if(historyContElem.childNodes.length == 1) {
+        historyNone.style.display = "block";
+    };
+})
+historyCloseBtnElem.addEventListener("click", () => {
+    historyBodyElem.classList.remove("active");
 })
 
 
@@ -65,10 +80,40 @@ function clearClick() {
 
 
 function resultClick() {
-    //후위 표기식 변환 후 계산
-    outputElem.value = calculate(makeBack());     
+    const result = calculate(makeBack()); // 계산 결과 값
+    makeHistory([outputElem.value, result]); //기록 삽입
+    outputElem.value = result; //계산기 아웃풋에 값 출력
 }
 
+function makeHistory(data = Array) {
+    const li = document.createElement("li");
+    const div = document.createElement("div");
+
+    //식이랑 값을 나누어서 이벤트 주고 div에 append
+    data.forEach(value => {
+        const span = document.createElement("span");
+        span.innerText = value;
+        span.addEventListener("click", () => {
+            outputElem.value = value;
+            historyBodyElem.classList.remove("active");
+        })
+        div.appendChild(span);
+    })
+    div.childNodes[0].after("="); //식과 값 사이에 '='삽입
+
+    const trash = document.createElement("a");
+    trash.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>'; //
+    trash.addEventListener("click", (e) => {
+        e.preventDefault;
+        e.target.parentNode.remove();
+    })
+
+    li.appendChild(div);
+    li.appendChild(trash);
+    
+    historyContElem.appendChild(li);
+    historyNone.style.display = 'none'; //기록 없음을 안보이게
+}
 
 function makeBack() {
     let stack = []; //연산자 담을 스택
