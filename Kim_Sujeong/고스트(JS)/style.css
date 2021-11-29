@@ -46,21 +46,87 @@ CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.
     justify-content: space-between;
     flex-wrap: wrap;
     width: 70px;
+    height: 70px;
     position: absolute;
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
 }
+.ghost .body .icon-face{
+    background-color: black;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 0;
+    
+}
+.ghost .body .icon-face i{
+    color:white;
+    font-size: 6rem;
+}
+
 .ghost .body .face .eye{
     width: 19px;
     height: 19px;
     border-radius: 50%;
     background-color: #333;
 }
+.ghost .body .face .eye .pupil{
+    display: block;
+    position: relative;
+    left: 10px;
+    bottom: -10px;
+    width : 0px;
+    height : 0px;
+    border-radius: 50%;
+}
+.ghost .body .face .eye .pupil:before {
+    content: '';
+    display: block;
+    position: relative;
+    bottom: 1px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white
+}
+
+.ghost .body .face .eye .pupil:after {
+    content: '';
+    display: block;
+    position: relative;
+    border-radius: 50%;
+}
+
 .ghost .body .face .mouse{
     width: 33px;
     height: 15px;
     background-color: #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 18px;
+    margin-top: 13px;
+}
+.ghost .body .face .eye[emotion='surprised']{
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background-color: red;
+}
+.ghost .body .face .mouse[emotion='surprised']{
+    width: 33px;
+    height: 15px;
+    background-color: red;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 10px;
