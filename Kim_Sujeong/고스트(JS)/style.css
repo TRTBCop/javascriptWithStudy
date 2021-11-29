@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+/* css로 애니메이션 기능 추가하기 */
+/* animation : 식별자이름 애니메이션총프레임시간 반복여부 */
+.ghost{
+    animation: moveUpDown 1s infinite;
+    position: absolute;
+}
+/* @keyframes 
+: 개발자가 애니메이션 중간중간의 특정 지점들을 거칠 수 있는 키프레임들을 설정함으로써 
+CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.
+- 세밀한 중간 동작이 포인트
+ */
+@keyframes moveUpDown {
+    0%{
+        margin-top: 0px;
+    }
+    50%{
+        margin-top: -50px;
+    }
+    100%{
+        margin-top: 0px;
+    }
+}
+.ghost .body{
+    width: 120px;
+    height: 160px;
+    background-color: #fff;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
+    position: relative;
+}
+.ghost .body .face{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 70px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.ghost .body .face .eye{
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background-color: #333;
+}
+.ghost .body .face .mouse{
+    width: 33px;
+    height: 15px;
+    background-color: #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 18px;
+    margin-top: 13px;
+}
+.ghost .bottom {
+    display: flex;
+}
+.ghost .bottom .leg{
+    background-color: #fff;
+    width: 24px;
+    height: 15px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+/* nth:nth-child(2n)는 2배수에 해당하는 것만 특별히 css를 추가로 적어줄 수 있다. */
+/* 그래서 html코드에 .leg가 3개일 땐 위의 단순 .leg걸러 2개, 아래 :nth-child(2n)으로 1개가 보임*/
+.ghost .bottom .leg:nth-child(2n){
+    position: relative;
+    top: -6px;
+    background-color: #000;
+    border-radius: 50%;
+}
