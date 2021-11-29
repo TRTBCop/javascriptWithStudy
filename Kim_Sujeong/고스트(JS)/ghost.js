@@ -1,61 +1,74 @@
 // Constant
+const hidden = "hidden";
 const emotionStr = "emotion";
 const emotionlist = {
-    surprised : "surprised",
-    happy : "happy",
-    tickle : "tickle",
     angry : "angry",
-    depressed : "depressed",
-    excited : "excited",
-    relaxed : "relaxed",
-    glance : "glance",
+    dizzy : "dizzy",
+    expressionless : "expressionless",
+    frown : "frown",
+    heartEyes : "heart-eyes",
+    laughing : "laughing",
+    neutral : "neutral",
+    smile : "smile",
+    smileUpsideDown : "fsmile-upside-down",
+    sunglasses : "sunglasses",
+    wink : "wink",
 }
 // Dom element
 const body = document.querySelector("body");
 const ghost = document.querySelector(".ghost");
+const iconFace = document.querySelector(".icon-face");
+const i = document.querySelector(".icon-face i");
+const basicFace = document.querySelector(".face");
 const eyes = document.querySelectorAll(".eye");
 const pupils = document.querySelectorAll(".pupil");
-const orgleg = document.querySelectorAll(".leg")
-const legs = document.querySelectorAll(".leg:nth-child(2n)")
+const mouse = document.querySelector(".mouse");
+const orgleg = document.querySelectorAll(".leg");
+const legs = document.querySelectorAll(".leg:nth-child(2n)");
 
 // Variable
-let conditions ={
-    isDragging : false,
-    clickedCnt : 0,
-    dblclickedCnt : 0,
-}
+let isDragging = false;
+let clickedCnt = 0;
+let dblclickedCnt = 0;
+let clickFlag = false;
 
 // Function
 function makeEmotion(emotion){
-    eyes.forEach(element => element.setAttribute(emotionStr,emotion));
+    // 기존표정을 지우고, 아이콘표정을 띄운다.(이때 아이콘 표정을 설정해준다)
+    basicFace.style.display='none';
+    iconFace.style.display = 'flex';
+    i.className = `bi bi-emoji-${emotion}-fill`;
     setTimeout(unravelEmotion,1000,emotion);
 }
 function unravelEmotion(emotion){
-    eyes.forEach(element => element.removeAttribute(emotionStr,emotion));
+    // 아이콘표정을 지우고, 기존표정을 띄운다
+    basicFace.style.display='flex';
+    iconFace.style.display = 'none';
 }
 
 // Event
-let isDragging = false;
 // 드래그로 고스트 이동시키기
 ghost.addEventListener("dragend",(e)=>{
     ghost.style.left = `${e.pageX-60}px`;
     ghost.style.top = `${e.pageY-80}px`;;
-    conditions.isDragging = true;
+    isDragging = true;
 });
 // 드래그로 이동당해서 신난 고스트
 ghost.addEventListener("dragover",(e)=>{
-    makeEmotion(emotionlist.excited);
+    makeEmotion(emotionlist.laughing);
+    ghost.style.left = `${e.pageX-60}px`;
+    ghost.style.top = `${e.pageY-80}px`;;
 });
-// 드래그로 이동 당한 후 안심하는 고스트
+// 드래그로 이동 당한 후 어지러워하는 고스트
 ghost.addEventListener("dragend",(e)=>{
-    makeEmotion(emotionlist.relaxed);
-    conditions.isDragging = false;
+    makeEmotion(emotionlist.dizzy);
+    isDragging = false;
 });
 // 마우스를 쳐다보는 고스트의 눈
 body.addEventListener("mousemove",(e)=>{
     let ghostPos = ghost.getBoundingClientRect();
     if(Math.abs(e.pageX-(ghostPos.left+60))>80 && Math.abs(e.pageY-(ghostPos.top+80))>80) {
-        if(conditions.isDragging) return;
+        if(isDragging) return;
         eyes.forEach(eye=>{
             let eyePos = eye.getBoundingClientRect();
             let rad = Math.atan2(e.pageY - (eyePos.y+eyePos.height*0.5), e.pageX-(eyePos.x+eyePos.width*0.5));
@@ -67,19 +80,29 @@ body.addEventListener("mousemove",(e)=>{
 });
 // 클릭당했을 때 웃어주다가 너무 많아지면 화냄
 ghost.addEventListener("click", (e)=>{
-    if(conditions.clickedCnt<5) makeEmotion(emotionlist.happy)
-    else {
-        makeEmotion(emotionlist.angry);
-        conditions.clickedCnt = 0;
+    if(!clickFlag){
+        // 많이 안괴롭혔다면
+        if(clickedCnt<5) {
+            makeEmotion(emotionlist.laughing);
+            clickedCnt+=1;
+        // 많이 괴롭혔다면
+        }else{
+            makeEmotion(emotionlist.neutral);
+            clickedCnt = 0;
+        }
+        clickFlag = true;
+        setTimeout(clickFlag=false,500);
     }
-    conditions.clickedCnt+=1;
 });
-// 더블클릭 당하면 간지럼 탐 그러다 너무 많이 간지럼 태우면 화냄
-ghost.addEventListener("dblclick", ()=>{
-    if(conditions.dblclickedCnt<5) makeEmotion(emotionlist.tickle)
-    else {
-        makeEmotion(emotionlist.tickle)
-        conditions.dblclickedCnt = 0;
+ghost.addEventListener("dblclick", (e)=>{
+    // 많이 안괴롭혔다면
+    if(clickedCnt<5) {
+        clickedCnt+=1;
+        makeEmotion(emotionlist.heartEyes);
+    // 많이 괴롭혔다면
+    }else{
+        makeEmotion(emotionlist.angry);
+        clickedCnt = 0;
     }
-    conditions.dblclickedCnt+=1;
+
 });

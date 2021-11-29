@@ -51,6 +51,7 @@ CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
+    
 }
 .ghost .body .icon-face{
     background-color: black;
@@ -61,13 +62,14 @@ CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.
     top: 20px;
     left: 15px;
 
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     text-align: center;
     line-height: 0;
-    
 }
+
+
 .ghost .body .icon-face i{
     color:white;
     font-size: 6rem;
