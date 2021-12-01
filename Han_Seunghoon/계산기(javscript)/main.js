@@ -78,7 +78,6 @@ function clearClick() {
     outputElem.value = '';
 }
 
-
 function resultClick() {
     const result = calculate(makeBack()); // 계산 결과 값
     makeHistory([outputElem.value, result]); //기록 삽입
