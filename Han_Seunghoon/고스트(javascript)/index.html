@@ -9,29 +9,31 @@
     <link rel="stylesheet" href="./style.css">
 
 </head>
-<body>
-    <div class="ghost">
-        <div class="body">
-            <div class="face">
-                <div class="eye"></div>
-                <div class="eye"></div>
-                <div class="mouse"></div>
+<body>  
+    <div class="word">
+        <div class="wall-wrap">
+            <div class="wall left-wall"></div>
+            <div class="wall right-wall"></div>
+            <div class="wall bottom-wall"></div>
+        </div>        
+        <div class="ghost">
+            <div class="body">
+                <div class="face">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                    <div class="mouse"></div>
+                </div>
             </div>
-        </div>
-        <div class="bottom">
-            <div class="leg"></div>
-            <div class="leg"></div>
-            <div class="leg"></div>
-            <div class="leg"></div>
-            <div class="leg"></div>
+            <div class="bottom">
+                <div class="leg"></div>
+                <div class="leg"></div>
+                <div class="leg"></div>
+                <div class="leg"></div>
+                <div class="leg"></div>
+            </div>
         </div>
     </div>
 
-    <script>
-        document.body.addEventListener("mousemove", function(e) {
-            document.querySelector(".ghost").style.left = e.pageX + 'px';
-            document.querySelector(".ghost").style.top = e.pageY + 'px';
-        })
-    </script>
+    <script src="./main.js"></script>
 </body>
 </html>
