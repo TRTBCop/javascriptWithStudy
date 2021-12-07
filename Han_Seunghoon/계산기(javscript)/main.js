@@ -44,7 +44,7 @@ const historyNone = historyContElem.querySelector(".history-none");
 })
 historyBtnElem.addEventListener("click", () => {
     historyBodyElem.classList.add("active");
-    if(historyContElem.childNodes.length == 1) {
+    if(historyContElem.children.length == 1) {
         historyNone.style.display = "block";
     };
 })
@@ -104,7 +104,10 @@ function makeHistory(data = Array) {
     trash.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>'; //
     trash.addEventListener("click", (e) => {
         e.preventDefault;
-        e.target.parentNode.remove();
+        e.target.parentNode.parentNode.remove();             
+        if(historyContElem.children.length == 1) {
+            historyNone.style.display = "block";
+        };
     })
 
     li.appendChild(div);
