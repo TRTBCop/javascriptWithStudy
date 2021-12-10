@@ -33,6 +33,7 @@ body{
     position: absolute;
     top: 0;
     left: 0;
+    width: 128px;
 
 }
 .cube img:nth-child(1){
@@ -47,4 +48,10 @@ body{
 }
 .cube img:nth-child(4){
     transform: rotateX(270deg) translateZ(64px);
+}
+.cube img:nth-child(5){
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(90deg) translateZ(64px);
+}
+.cube img:nth-child(6){
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(180deg) translateZ(64px);
 }
