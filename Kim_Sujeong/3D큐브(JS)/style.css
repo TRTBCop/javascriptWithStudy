@@ -4,9 +4,36 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-
-body{
+.gyroDataBox{
+    display: flex;
+    background-color: azure;
+}
+.gyroDataBox table{
+    margin: 2vh 0 2vh 1rem;
+    width: 100%;
+    display: block;
+    
+}
+table th{
+    text-align: right;
+}
+table td{
+    text-align: left;
+    padding-left: 1rem;
+}
+.gyroDataBox button{
+    width: 40vw;
+    margin: 1rem;
+    border-radius: 1rem;
+    font-size: large;
+    font-weight: bold;
+    background-color: green;
+    border: #1f1f1f solid 1px;
+}
+.gyroDataBox button[auto="true"]{
+    background-color: yellow;
+}
+.outterCubeCont {
     background-color: #1f1f1f;
     display: flex;
     height :100vh;
@@ -19,22 +46,21 @@ body{
     /* 원근감을 준다. */
     perspective: 1000px;
 }
-
 .cube{
     width: 128px;
     height: 128px;
     /* 이걸 사용함으로써 z축의 개념이 등장 */
     transform-style: preserve-3d;
     /* 큐브를 움직임 */
-    transform: rotateX(60deg);
-    transition: all 1s;
+    /* transform: rotateY(10deg); */
+    /* 큐브가 지속적으로 회전하도록 함 */
+    /* transition: all 1s; */
 }
 .cube img{
     position: absolute;
     top: 0;
     left: 0;
     width: 128px;
-
 }
 .cube img:nth-child(1){
     /* translateX는 좌우 Y는 상하로 움직임 Z는 원근감을 준다. */
@@ -50,8 +76,8 @@ body{
     transform: rotateX(270deg) translateZ(64px);
 }
 .cube img:nth-child(5){
-    transform: rotateX(0deg) rotateY(90deg) rotateZ(90deg) translateZ(64px);
+    transform: rotateX(270deg) rotateY(90deg) rotateZ(90deg) translateZ(64px);
 }
 .cube img:nth-child(6){
-    transform: rotateX(0deg) rotateY(90deg) rotateZ(180deg) translateZ(64px);
+    transform: rotateX(180deg) rotateY(270deg) rotateZ(180deg) translateZ(64px);
 }
