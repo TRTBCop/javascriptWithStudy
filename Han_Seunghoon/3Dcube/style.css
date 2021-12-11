@@ -18,8 +18,6 @@ body {
     width: 128px;
     height: 128px;
     transform-style: preserve-3d;
-    transform: rotateX(-65deg);
-    transition: 1s;
 }
 .cube img {
     position: absolute;
@@ -37,4 +35,10 @@ body {
 }
 .cube img:nth-child(4) {
     transform: rotateX(270deg) translateZ(64px);
+}
+.cube img:nth-child(5) {
+    transform: rotateX(270deg) rotateY(-90deg) translateZ(64px);
+}
+.cube img:nth-child(6) {
+    transform: rotateX(270deg) rotateY(90deg) translateZ(64px);
 }
