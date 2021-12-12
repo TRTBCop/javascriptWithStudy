@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><header><div><a href="dice/dice.html">주사위 던지기로 이동</a>
+    <br><br></div></header>
+
+
+<div class="container">
+    <div class="cube">
+        <image src="images/facebook.png" alt="facebook page"></image>
+        <image src="images/twitter.png" alt="twitter page"></image>
+        <image src="images/youtube.png" alt="youtube page"></image>
+        <image src="images/instagram.png" alt="instagram page"></image>
+    </div>
+</div>
+<script>
+    let deg=0;
+    setInterval(()=>{
+        deg=deg-90
+        document.querySelector(".cube").style.transform=`rotateX(${deg}deg)`
+    },1000)
+
+</script>
+<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
