@@ -138,3 +138,5 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 
+# ipython temp files
+.ipynb_checkpoints
