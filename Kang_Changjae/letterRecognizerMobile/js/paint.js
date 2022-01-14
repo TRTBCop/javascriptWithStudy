@@ -97,7 +97,7 @@ if(clearBtn){
 	clearBtn.addEventListener("click", handleClearClick, false);
 }
 function handleGoClick() {
-	resultText.innerHTML = '메롱'
+	resultText.innerHTML = '???'
 }
 const goBtn = document.getElementById("goBtn");
 if(goBtn){
