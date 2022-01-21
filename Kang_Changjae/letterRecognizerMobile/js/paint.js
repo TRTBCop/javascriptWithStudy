@@ -1,6 +1,7 @@
 window.addEventListener('load', init, false);
 
 let canvas, ctx, tool;
+let socket = io();
 
 function init() {
 	canvas = document.getElementById("mainNote");
@@ -18,6 +19,15 @@ function init() {
 	canvas.addEventListener('touchstart', doEvent, false);
 	canvas.addEventListener('touchmove', doEvent, false);
 	canvas.addEventListener('touchend', doEvent, false);
+
+	socket.on("connect", function(){
+		console.log("Connected.")
+	});
+
+	socket.on("response", (data)=>{
+		resultText.innerHTML = data;
+		console.log("Get Response.");
+	});
 }
 
 function tool_pencil() {
@@ -72,7 +82,7 @@ function doEvent(event) {
 		let left = 0;
 		let top = 0;
 		let elem = document.getElementById('mainNote');
-		
+
 		while(elem) {
 			left = left + parseInt(elem.offsetLeft);
 			top = top + parseInt(elem.offsetTop);
@@ -89,15 +99,17 @@ function doEvent(event) {
 }
 
 function handleClearClick() {
-	ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
-	resultText.innerHTML = ''
+	ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+	resultText.innerHTML = "";
 }
 const clearBtn = document.getElementById("clearBtn");
 if(clearBtn){
 	clearBtn.addEventListener("click", handleClearClick, false);
 }
 function handleGoClick() {
-	resultText.innerHTML = '???'
+	resultText.innerHTML = "Hmm..";
+	socket.emit("request", canvas.toDataURL("image/png"));
+	console.log("Requested.");
 }
 const goBtn = document.getElementById("goBtn");
 if(goBtn){
