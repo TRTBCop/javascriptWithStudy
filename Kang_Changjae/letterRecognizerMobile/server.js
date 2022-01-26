@@ -16,7 +16,7 @@ server.listen(8080, function() {
 });
 
 io.on("connection", function(socket) {
-	console.log("Connected.");
+	console.log("Connected: "+socket.id);
 	socket.on("request", (reqData)=>{
 		console.log("Get Request.");
 		matches = reqData.match(/^data:.+\/(.+);base64,(.*)$/);
@@ -27,8 +27,9 @@ io.on("connection", function(socket) {
 		let rst = require("child_process").spawn(
 			"python3",
 			[
-				"python/cnnPredictor.py",
-				"python/model/digitCnnClassifier.bin",
+				"python/letterCnnPredictor.py",
+				"python/model/letterCnnClassifier.bin",
+				"python/data/intToStrMap.bin",
 				"python/image/"+socket.id+"."+matches[1]
 			]
 		);
