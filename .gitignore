@@ -140,3 +140,14 @@ dist
 
 # ipython temp files
 .ipynb_checkpoints
+
+# image file
+*.png
+*.jpg
+*.jpeg
+
+# binary file
+*.bin
+
+# json file
+*.json
