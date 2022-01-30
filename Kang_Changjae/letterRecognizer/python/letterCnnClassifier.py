@@ -2,16 +2,17 @@
 # -*- coding: utf8 -*-
 
 import glob, joblib
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
-from keras.utils import to_categorical
-from keras.metrics import categorical_accuracy
-from keras.models import Sequential
-from keras.layers import *
-from keras.optimizers import *
-from keras.callbacks import EarlyStopping
 import tensorflow as tf
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.metrics import categorical_accuracy
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import *
+from tensorflow.keras.optimizers import *
+from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.python.keras import backend as K
 
 config = tf.compat.v1.ConfigProto()
