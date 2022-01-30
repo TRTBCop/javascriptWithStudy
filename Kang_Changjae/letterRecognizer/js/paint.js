@@ -22,7 +22,7 @@ function loadInit() {
 
 	socket = io();
 	socket.on("connect", function(){
-		console.log("Connected.")
+		console.log("Connected.");
 	});
 
 	socket.on("response", (data)=>{
@@ -36,7 +36,7 @@ function tool_pencil() {
 	this.started = false;
 
 	this.mousedown = function(event) {
-		ctx.beginPath()
+		ctx.beginPath();
 		ctx.moveTo(event._x, event._y);
 		tool.started = true;
 	};
