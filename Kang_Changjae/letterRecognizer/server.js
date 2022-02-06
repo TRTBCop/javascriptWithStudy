@@ -18,7 +18,7 @@ server.listen(8080, function() {
 io.on("connection", function(socket) {
 	console.log("Connected: "+socket.id);
 	socket.on("request", (reqData)=>{
-		console.log("Get Request.");
+		console.log("Get Request: "+socket.id);
 		matches = reqData.match(/^data:.+\/(.+);base64,(.*)$/);
 		fs.writeFileSync(
 			"./python/image/"+socket.id+"."+matches[1],
@@ -34,8 +34,8 @@ io.on("connection", function(socket) {
 			]
 		);
 		rst.stdout.on("data", function(respData) {
-			io.emit("response", respData.toString());
-			console.log("Responsed.");
+			io.emit("response_"+socket.id, respData.toString());
+			console.log("Responsed: "+socket.id);
 		});
 	});
 });

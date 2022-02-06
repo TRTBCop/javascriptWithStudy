@@ -23,11 +23,10 @@ function loadInit() {
 	socket = io();
 	socket.on("connect", function(){
 		console.log("Connected.");
-	});
-
-	socket.on("response", (data)=>{
-		resultText.innerHTML = data;
-		console.log("Get Response.");
+		socket.on("response_"+socket.id, (data)=>{
+			resultText.innerHTML = data;
+			console.log("Get Response.");
+		});
 	});
 }
 
