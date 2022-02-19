@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>아파트 급매물 v0.1</title>
+</head>
+<body>
+	<div id="map" style="width:100%;height:100vh;"></div>
+
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=154fdde0c15dd7c4ac48ac07552871be"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			mapOption = {
+				center: new kakao.maps.LatLng(37.4975121, 127.0280943), // 지도의 중심좌표
+				level: 6, // 지도의 확대 레벨
+				mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+			}; 
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+
+		let request = new XMLHttpRequest();
+		request.open("GET", "http://115.68.55.252/kakaoMapApi/fastSellComplexLst.csv", false);
+		request.send();
+		var data = request.responseText;
+		data = data.split("\n");
+		data.shift();
+		data.pop();
+		for(cnt=0;cnt<data.length;cnt++) {
+			tgtArr = data[cnt].split(",");
+			// 지도에 마커를 생성하고 표시한다
+			var marker = new kakao.maps.Marker({
+				position: new kakao.maps.LatLng(tgtArr[0], tgtArr[1]), // 마커의 좌표
+				map: map // 마커를 표시할 지도 객체
+			});
+			var infoWindow = new kakao.maps.InfoWindow({
+				content: tgtArr[2]
+			});
+			infoWindow.open(map, marker);
+		}
+	</script>
+</body>
+</html>
