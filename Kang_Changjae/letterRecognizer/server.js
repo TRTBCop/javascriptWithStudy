@@ -35,7 +35,6 @@ io.on("connection", function(socket) {
 			]
 		);
 		rst.stdout.on("data", function(respData) {
-			console.log(respData.toString());
 			io.emit("response_"+socket.id, respData.toString());
 			console.log("Responsed: "+socket.id+"("+address+")");
 		});
