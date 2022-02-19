@@ -55,4 +55,4 @@ model.fit(
 )
 
 joblib.dump(intToStrMap, './data/intToStrMap.bin')
-joblib.dump(model, './model/letterCnnClassifier.bin')
+model.save('./model/letterCnnClassifier')
