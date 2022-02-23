@@ -19,6 +19,9 @@ function loadInit() {
 	canvas.addEventListener('mousedown', doEvent, false);
 	canvas.addEventListener('mousemove', doEvent, false);
 	canvas.addEventListener('mouseup', doEvent, false);
+	canvas.addEventListener('touchstart', doEvent, false);
+	canvas.addEventListener('touchmove', doEvent, false);
+	canvas.addEventListener('touchend', doEvent, false);
 
 	socket = io();
 	socket.on("connect", function(){
@@ -46,6 +49,23 @@ function tool_pencil() {
 		}
 	};
 	this.mouseup = function(event) {
+		if(tool.started) {
+			tool.started = false;
+		}
+	};
+
+	this.touchstart = function(event) {
+		ctx.beginPath();
+		ctx.moveTo(event._x, event._y);
+		tool.started = true;
+	};
+	this.touchmove = function(event) {
+		if(tool.started) {
+			ctx.lineTo(event._x, event._y);
+			ctx.stroke();
+		}
+	};
+	this.touchend = function(event) {
 		if(tool.started) {
 			tool.started = false;
 		}
