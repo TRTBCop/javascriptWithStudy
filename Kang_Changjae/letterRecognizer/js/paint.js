@@ -74,17 +74,14 @@ function tool_pencil() {
 
 function doEvent(event) {
 	if( event.offsetX || event.offsetX == 0 ) {
-		console.log('offset');
 		event._x = event.offsetX;
 		event._y = event.offsetY;
 	}
 	else if( event.layerX || event.layerX == 0 ) {
-		console.log('layer');
 		event._x = event.layerX;
 		event._y = event.layerY;
 	}
 	else if( event.targetTouches[0] || event.targetTouches[0].pageX == 0 ) {
-		console.log('touch');
 		let left = 0;
 		let top = 0;
 		let elem = document.getElementById('mainNote');
