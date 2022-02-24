@@ -1,13 +1,13 @@
 @import 'init.css';
 
 html {
-	height: -moz-available;
 	height: -webkit-fill-available;
+	height: 100%;
 }
 
 body {
-	height: -moz-available;
 	height: -webkit-fill-available;
+	height: 100%;
 	background-color: #f6f9fc;
 	display: flex;
 	justify-content: center;
