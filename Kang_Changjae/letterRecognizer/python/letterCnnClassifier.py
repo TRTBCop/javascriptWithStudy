@@ -30,7 +30,12 @@ trainY = [strToIntMap[string] for string in trainY]
 trainY = to_categorical(trainY, len(np.unique(trainY)))
 
 model = Sequential()
-model.add(Conv2D(filters=16, kernel_size=(5,5),padding='Same', activation='relu', input_shape=trainX.shape[1:]))
+model.add(
+	Conv2D(
+		filters=16, kernel_size=(5,5), padding='Same',
+		activation='relu', input_shape=trainX.shape[1:]
+	)
+)
 model.add(Conv2D(filters=16, kernel_size=(5,5),padding='Same', activation='relu'))
 model.add(MaxPool2D(pool_size=(2,2)))
 model.add(Dropout(0.25))
@@ -46,7 +51,11 @@ model.add(Flatten())
 model.add(Dense(256, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(trainY.shape[1], activation='softmax'))
-model.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(
+	optimizer=Adam(learning_rate=0.001),
+	loss='categorical_crossentropy',
+	metrics=['accuracy']
+)
 
 model.fit(
 	trainX, trainY,
